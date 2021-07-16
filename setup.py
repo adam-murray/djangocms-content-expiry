@@ -31,7 +31,7 @@ setup(
     author="Eliga Services",
     test_suite="test_settings.run",
     author_email="enquiries@eliga.services",
-    url="",
+    url="https://github.com/EligaServices/djangocms-content-expiry",
     license="BSD",
     zip_safe=False,
     tests_require=TEST_REQUIREMENTS,
