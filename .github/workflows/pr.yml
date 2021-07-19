@@ -1,4 +1,4 @@
-name: django CMS test.yml
+name: django CMS Content Expiry.yml
 
 on: [push, pull_request]
 
@@ -32,6 +32,6 @@ jobs:
         python setup.py install
     - name: Test with django test runner
       run: |
-        python manage.py test
+        python setup.py test
       env:
         DATABASE_URL: sqlite://localhost/testdb.sqlite
