@@ -1,4 +1,5 @@
 # test libraries
+django-cms
 coverage
 pyflakes>=2.1.1
 flake8
