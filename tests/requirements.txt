@@ -1,4 +1,5 @@
 # test libraries
+https://github.com/divio/django-cms/tarball/66c70394c9e144281a0b47d93e3784d06318acf9#egg=django-cms
 coverage
 pyflakes>=2.1.1
 flake8
