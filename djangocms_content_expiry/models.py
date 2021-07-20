@@ -2,7 +2,7 @@ import datetime
 
 from django.db import models
 
-# Temporary placeholders
+# Temporary placeholder
 TYPE_CHOICES = (("Page", "Page"), ("Alias", "Alias"),)
 
 
