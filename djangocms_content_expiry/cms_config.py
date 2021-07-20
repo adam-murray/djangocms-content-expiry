@@ -1,5 +1,4 @@
 from django.conf import settings
-from djangocms_versioning.datastructures import VersionableItem, default_copy
 
 from cms.app_base import CMSAppConfig
 from cms.utils.i18n import get_language_tuple

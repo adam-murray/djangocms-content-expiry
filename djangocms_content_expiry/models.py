@@ -1,6 +1,7 @@
 import datetime
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 # Temporary placeholder
 TYPE_CHOICES = (("Page", "Page"), ("Alias", "Alias"),)
