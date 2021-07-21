@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 import datetime
 
 
-# Temporary placeholder
+# Temporary placeholders
 TYPE_CHOICES = (("Page", "Page"), ("Alias", "Alias"),)
 
 
