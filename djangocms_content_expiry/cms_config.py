@@ -21,7 +21,6 @@ class ContentExpiryAppConfig(CMSAppConfig):
             VersionableItem(
                 content_model=ContentExpiryContent,
                 grouper_field_name="page_type",
-                extra_grouping_fields=["language"],
                 version_list_filter_lookups={"language": get_language_tuple},
                 copy_function=default_copy
             )

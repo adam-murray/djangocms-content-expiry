@@ -1,26 +1,16 @@
 from django.db import models
+from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 
 import datetime
 
 
-# Temporary placeholders
-TYPE_CHOICES = (("Page", "Page"), ("Alias", "Alias"),)
-
-
 class ContentExpiry(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return "{} ({})".format(self.name, self.pk)
+    pass
 
 
 class ContentExpiryContent(models.Model):
-    page_type = models.ForeignKey(ContentExpiry, on_delete=models.CASCADE)
-    type = models.CharField(
-        max_length=50,
-        choices=TYPE_CHOICES
-    )
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     from_expiry_date = models.DateField(_("From Expiry Date"), default=datetime.date.today)
     to_expiry_date = models.DateField(_("To Expiry Date"), default=datetime.date.today)
 
