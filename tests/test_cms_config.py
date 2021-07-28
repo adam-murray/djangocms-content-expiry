@@ -1,7 +1,7 @@
-from unittest.mock import Mock
-
 from django.core.exceptions import ImproperlyConfigured
 from django.test import TestCase
+
+from unittest.mock import Mock
 
 from djangocms_content_expiry import cms_config
 
@@ -15,4 +15,3 @@ class AppRegistrationTestCase(TestCase):
 
         with self.assertRaises(ImproperlyConfigured):
             extensions.configure_app(config)
-

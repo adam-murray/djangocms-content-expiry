@@ -21,4 +21,4 @@ mock>=2.0.0
 django-formtools
 Django>=1.11,<3.0
 django-formtools==2.2
-git+git://github.com/divio/djangocms-versioning.git#egg=djangocms-versioning
+https://github.com/divio/djangocms-versioning/tarball/492d01c974e40b007b71e2a7e961a9019a0d5ac4#egg=djangocms-versioning
