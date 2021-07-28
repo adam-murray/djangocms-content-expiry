@@ -2,6 +2,7 @@ HELPER_SETTINGS = {
     "TIME_ZONE": "America/Chicago",
     "INSTALLED_APPS": [
         "djangocms_content_expiry",
+        "djangocms_versioning"
     ],
     "MIGRATION_MODULES": {
         "auth": None,
