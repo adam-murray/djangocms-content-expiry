@@ -9,9 +9,8 @@ INSTALL_REQUIREMENTS = [
 ]
 
 TEST_REQUIREMENTS = [
-    "wheel",
     "djangocms_helper",
-    "djangocms-versioning"
+    "djangocms-versioning",
 ]
 
 
@@ -39,6 +38,6 @@ setup(
     tests_require=TEST_REQUIREMENTS,
     dependency_links=[
         "https://github.com/divio/django-cms/tarball/release/4.0.x#egg=django-cms-4.0.0",
-        'https://github.com/divio/djangocms-versioning/tarball/master#egg=djangocms-versioning-0.0.29',
+        "https://github.com/divio/djangocms-versioning/tarball/master#egg=djangocms-versioning-0.0.29",
     ],
 )
