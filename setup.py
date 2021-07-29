@@ -9,7 +9,7 @@ INSTALL_REQUIREMENTS = [
 ]
 
 TEST_REQUIREMENTS = [
-    "wheel"
+    "wheel",
     "djangocms_helper",
     "djangocms-versioning"
 ]
