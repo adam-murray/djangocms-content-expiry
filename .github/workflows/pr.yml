@@ -1,6 +1,9 @@
 name: django CMS Content Expiry test.yml
 
-on: [pull_request, push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   database-sqlite:
