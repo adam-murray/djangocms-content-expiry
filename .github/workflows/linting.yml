@@ -1,6 +1,9 @@
 name: django CMS Content Expiry linters.yml
 
-on: [pull_request, push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   flake8:
