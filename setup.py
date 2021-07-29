@@ -9,8 +9,8 @@ INSTALL_REQUIREMENTS = [
 ]
 
 TEST_REQUIREMENTS = [
-    "djangocms_versioning",
     "djangocms_helper",
+    "djangocms-versioning"
 ]
 
 
@@ -37,6 +37,7 @@ setup(
     zip_safe=False,
     tests_require=TEST_REQUIREMENTS,
     dependency_links=[
-        "https://github.com/divio/django-cms/tarball/release/4.0.x#egg=django-cms-4.0.0"
+        "http://github.com/divio/django-cms/tarball/release/4.0.x#egg=django-cms-4.0.0",
+        'http://github.com/divio/djangocms-versioning/tarball/master#egg=djangocms-versioning-0.0.29',
     ],
 )
