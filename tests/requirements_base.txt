@@ -20,4 +20,5 @@ djangocms-helper
 mock>=2.0.0
 django-formtools
 Django>=1.11,<3.0
+https://github.com/divio/django-cms/tarball/66c70394c9e144281a0b47d93e3784d06318acf9#egg=django-cms
 django-formtools==2.2

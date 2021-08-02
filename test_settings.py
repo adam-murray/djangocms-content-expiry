@@ -3,7 +3,6 @@ HELPER_SETTINGS = {
     "INSTALLED_APPS": [
         "djangocms_versioning",
         "djangocms_content_expiry",
-
     ],
     "MIGRATION_MODULES": {
         "auth": None,
