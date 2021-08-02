@@ -22,3 +22,4 @@ django-formtools
 Django>=1.11,<3.0
 https://github.com/django-cms/django-cms/tarball/61e7756a79de0db9671417b44235bbf8866c3c9f
 django-formtools==2.2
+https://github.com/divio/djangocms-versioning/tarball/492d01c974e40b007b71e2a7e961a9019a0d5ac4#egg=djangocms-versioning
