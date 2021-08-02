@@ -6,10 +6,6 @@ import djangocms_content_expiry
 INSTALL_REQUIREMENTS = [
     "Django>=1.11,<3.0",
     "django-cms",
-]
-
-TEST_REQUIREMENTS = [
-    "djangocms_helper",
     "djangocms-versioning",
 ]
 
@@ -35,8 +31,4 @@ setup(
     url="https://github.com/EligaServices/djangocms-content-expiry",
     license="BSD",
     zip_safe=False,
-    dependency_links=[
-        "https://github.com/divio/django-cms/tarball/release/4.0.x#egg=django-cms-4.0.0",
-        "https://github.com/divio/djangocms-versioning/tarball/master#egg=djangocms-versioning-0.0.29",
-    ],
 )

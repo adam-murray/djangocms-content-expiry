@@ -6,10 +6,6 @@ import datetime
 
 
 class ContentExpiry(models.Model):
-    pass
-
-
-class ContentExpiryContent(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     from_expiry_date = models.DateField(_("From Expiry Date"), default=datetime.date.today)
     to_expiry_date = models.DateField(_("To Expiry Date"), default=datetime.date.today)
