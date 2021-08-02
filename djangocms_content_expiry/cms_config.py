@@ -30,10 +30,10 @@ class ContentExpiryCMSExtension(CMSAppExtension):
 class ContentExpiryAppConfig(CMSAppConfig):
     djangocms_content_expiry_enabled = True
     djangocms_versioning_enabled = getattr(
-        settings, "DJANGOCMS_NAVIGATION_VERSIONING_ENABLED", True
+        settings, "DJANGOCMS_CONTENT_EXPIRY_VERSIONING_ENABLED", True
     )
     djangocms_moderation_enabled = getattr(
-        settings, "DJANGOCMS_NAVIGATION_MODERATION_ENABLED", True
+        settings, "DJANGOCMS_CONTENT_EXPIRY_MODERATION_ENABLED", True
     )
     content_expiry_models = {
         Page: ["title"]
