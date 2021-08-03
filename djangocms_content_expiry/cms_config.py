@@ -24,7 +24,9 @@ class ContentExpiryCMSExtension(CMSAppExtension):
 
 
 class ContentExpiryAppConfig(CMSAppConfig):
-    djangocms_content_expiry_enabled = True
+    djangocms_content_expiry_enabled = getattr(
+        settings, "DJANGOCMS_CONTENT_EXPIRY_ENABLED", True
+    )
     content_expiry_models = {
         Page: ["title"]
     }
