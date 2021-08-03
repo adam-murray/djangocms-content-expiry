@@ -10,7 +10,7 @@ jobs:
       matrix:
         python-version: [ 3.8 ]  # latest release minus two
         requirements-file: [
-          requirements.txt,
+          django-2.2.txt,
         ]
         os: [
           ubuntu-20.04,
