@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 from djangocms_content_expiry.models import ContentExpiry
-# from djangocms_versioning.admin import ExtendedVersionAdminMixin
 
 
 @admin.register(ContentExpiry)
