@@ -10,7 +10,7 @@ from djangocms_content_expiry.test_utils.polls.factories import PollContentExpir
 
 class ContentExpiryMonkeyPatchTesCase(CMSTestCase):
 
-    def test_extended_admin_monkey_patch_list_display_locked(self):
+    def test_extended_admin_monkey_patch_list_display_expires(self):
         """
         Monkey patch should add expiry column and values to admin menu list display
         """
