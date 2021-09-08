@@ -9,7 +9,7 @@ def new_save(old_save):
     """
     def inner(version, **kwargs):
         old_save(version, **kwargs)
-        if version.state == constants.PUBLISHED:
+        if version.state == constants.DRAFT:
             create_version_expiry(version)
         return version
     return inner
