@@ -1,6 +1,9 @@
-from djangocms_versioning import constants, models
+from djangocms_versioning import models
 
-from djangocms_content_expiry.helpers import create_version_expiry
+from djangocms_content_expiry.helpers import create_version_expiry, version_has_expiry
+
+from djangocms_versioning.constants import DRAFT
+from djangocms_versioning.models import Version
 
 
 def new_save(old_save):
@@ -9,8 +12,15 @@ def new_save(old_save):
     """
     def inner(version, **kwargs):
         old_save(version, **kwargs)
-        if version.state == constants.DRAFT:
-            create_version_expiry(version)
+
+        # Check if version has content expiry added
+        new_version = version_has_expiry(version)
+        if new_version is not None and version.state != DRAFT:
+            # If version does not have an expiry record, it needs to be created
+            version = create_version_expiry(version)
+        else:
+            # Content expiry object exists so copying the original expiry object
+            version = Version.object.filter(version=version.pk).copy(version.created_by)
         return version
     return inner
 
