@@ -33,6 +33,19 @@ def create_version_expiry(version):
     return version
 
 
+def copy_content_expiry(old_record, new_version):
+    """
+    Create a content expiry record with existing expiry date
+    """
+    version = ContentExpiry.objects.get_or_create(
+        version=new_version,
+        created=new_version.created,
+        created_by=new_version.created_by,
+        expires=old_record[0].expires
+    )
+    return version
+
+
 def _get_future_expire_date(modified_date):
     """
      Expire date should be published + one year
