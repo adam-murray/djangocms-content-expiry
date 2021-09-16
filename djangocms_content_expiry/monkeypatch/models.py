@@ -1,8 +1,8 @@
 from djangocms_versioning import models
 
-from djangocms_content_expiry.models import ContentExpiry
-
 from dateutil.relativedelta import relativedelta
+
+from djangocms_content_expiry.models import ContentExpiry
 
 
 def new_save(old_save):
@@ -14,8 +14,7 @@ def new_save(old_save):
 
         # Check if version has content expiry added
         new_version = _version_has_expiry(version)
-
-        if new_version is not None:
+        if new_version is None:
             # If version does not have an expiry record, it needs to be created
             _create_version_expiry(version)
         else:
@@ -66,4 +65,5 @@ def _version_has_expiry(version):
     """
     Determine if a version has expiry record added
     """
+    test = version
     return getattr(version, "contentexpiry", None)
