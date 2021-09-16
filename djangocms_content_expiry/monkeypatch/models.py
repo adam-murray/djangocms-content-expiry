@@ -13,7 +13,6 @@ def new_save(old_save):
         old_save(version, **kwargs)
 
         # Check if version has content expiry added
-        new_version = _version_has_expiry(version)
         if new_version is None:
             # If version does not have an expiry record, it needs to be created
             _create_version_expiry(version)
