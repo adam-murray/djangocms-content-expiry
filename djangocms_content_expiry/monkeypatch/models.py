@@ -1,6 +1,6 @@
-from djangocms_versioning import models
-
 from dateutil.relativedelta import relativedelta
+
+from djangocms_versioning import models
 
 from djangocms_content_expiry.models import ContentExpiry
 
@@ -65,5 +65,4 @@ def _version_has_expiry(version):
     """
     Determine if a version has expiry record added
     """
-    test = version
     return getattr(version, "contentexpiry", None)
