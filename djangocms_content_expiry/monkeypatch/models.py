@@ -13,7 +13,16 @@ def new_save(old_save):
         old_save(version, **kwargs)
 
         # Check if version has content expiry added
-        if new_version is None:
+        content_expiry = getattr(version, "contentexpiry", None)
+        # Content expiry object exists so copying the original expiry object
+        if not content_expiry:
+            ContentExpiry.objects.create(
+                version=version,
+                created=version.created,
+                created_by=version.created_by,
+                expires=_get_future_expire_date(datetime.now())
+            )
+            return version 
             # If version does not have an expiry record, it needs to be created
             _create_version_expiry(version)
         else:
