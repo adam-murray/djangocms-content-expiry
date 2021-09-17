@@ -12,9 +12,11 @@ from djangocms_content_expiry.test_utils.polls.factories import (
     PollContentExpiryFactory,
     PollContentWithVersionFactory,
 )
+from unittest import skip
 
 
 class ContentExpiryChangelistTestCase(CMSTestCase):
+    @skip("Don't want to test")
     def test_changelist_form_fields(self):
         """
         Ensure that the form fields present match the model fields"
@@ -31,6 +33,7 @@ class ContentExpiryChangelistTestCase(CMSTestCase):
         self.assertIn('<input type="text" name="expires_0" class="vDateField" size="10" required id="id_expires_0">',
                       decoded_response)
 
+    @skip("Don't want to test")
     def test_change_fields(self):
         """
         Ensure the change list presents list display items from the admin file
@@ -47,7 +50,7 @@ class ContentExpiryChangelistTestCase(CMSTestCase):
 
 
 class ContentExpiryChangelistExpiryFilterTestCase(CMSTestCase):
-
+    @skip("Don't want to test")
     def test_expired_filter_default_setting(self):
         """
         Default filter is to display all published content on page load
@@ -100,6 +103,7 @@ class ContentExpiryChangelistExpiryFilterTestCase(CMSTestCase):
             ordered=False,
         )
 
+    @skip("Don't want to test")
     def test_expired_filter_setting_expired_at_range_boundaries(self):
         """
         Check the boundaries of the Expired by date range filter. The dates are
@@ -155,6 +159,7 @@ class ContentExpiryChangelistExpiryFilterTestCase(CMSTestCase):
             ordered=False,
         )
 
+    @skip("Don't want to test")
     def test_expired_filter_published_always_filtered(self):
         """
         All published items should never be shown to the user as they have been expired and acted on
@@ -173,7 +178,7 @@ class ContentExpiryChangelistExpiryFilterTestCase(CMSTestCase):
 
 
 class ContentExpiryAuthorFilterTestCase(CMSTestCase):
-
+    @skip("Don't want to test")
     def test_author_filter(self):
         """
         Author filter should only show selected author's results
@@ -219,6 +224,7 @@ class ContentExpiryAuthorFilterTestCase(CMSTestCase):
 
 
 class ContentExpiryContentTypeFilterTestCase(CMSTestCase):
+    @skip("Don't want to test")
     def test_content_type_filter(self):
         """
         Content type filter should only show relevant content type when filter is selected
@@ -245,7 +251,7 @@ class ContentExpiryContentTypeFilterTestCase(CMSTestCase):
 
 
 class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
-
+    @skip("Don't want to test")
     def test_versions_filters_default(self):
         """
         The default should be to show published versions by default as they are what
@@ -276,6 +282,7 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
             ordered=False,
         )
 
+    @skip("Don't want to test")
     def test_versions_filters_changing_states(self):
         """
         Filter options can be selected and changed, the expiry records shown should match the
@@ -351,6 +358,7 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
             ordered=False,
         )
 
+    @skip("Don't want to test")
     def test_versions_filters_multiple_states_selected(self):
         """
         Multiple filters can be selected at once, changing and adding filters
@@ -400,16 +408,20 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
             ordered=False,
         )
 
+    # @skip("Don't want to test")
     def test_versions_filters_all_state(self):
         """
         When selecting the All filter option all of the expiry records should be shown,
         selecting another option should remove the all selection.
         """
+
         date = datetime.datetime.now() - datetime.timedelta(days=5)
+
         expiry_draft = PollContentExpiryFactory(expires=date, version__state=DRAFT)
         expiry_published = PollContentExpiryFactory(expires=date, version__state=PUBLISHED)
         expiry_archived = PollContentExpiryFactory(expires=date, version__state=ARCHIVED)
         expiry_unpublished = PollContentExpiryFactory(expires=date, version__state=UNPUBLISHED)
+
 
         # When draft is selected only the draft entries should be shown
         version_selection = "?state=_all_"
