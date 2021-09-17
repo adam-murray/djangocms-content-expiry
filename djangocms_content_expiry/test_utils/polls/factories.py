@@ -1,6 +1,6 @@
 import factory
 from djangocms_versioning.models import Version
-from djangocms_versioning.signals import pre_version_operation, post_version_operation
+from djangocms_versioning.signals import post_version_operation, pre_version_operation
 from factory.fuzzy import FuzzyChoice, FuzzyText
 
 from djangocms_content_expiry.models import ContentExpiry
