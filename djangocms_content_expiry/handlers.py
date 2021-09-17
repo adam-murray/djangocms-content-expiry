@@ -10,12 +10,20 @@ from djangocms_content_expiry.models import ContentExpiry
 def create_content_expiry(**kwargs):
     if kwargs['operation'] == constants.OPERATION_DRAFT:
         version = kwargs["obj"]
-        if not hasattr(version, "contentexpiry"):
+        expire_record = ContentExpiry.objects.filter(version_id=version.source_id)
+        if not expire_record:
             ContentExpiry.objects.create(
                 version=version,
                 created=version.created,
                 created_by=version.created_by,
                 expires=_get_future_expire_date(datetime.now()),
+            )
+        else:
+            ContentExpiry.objects.create(
+                version=version,
+                created=version.created,
+                created_by=version.created_by,
+                expires=expire_record[0].expires,
             )
 
 

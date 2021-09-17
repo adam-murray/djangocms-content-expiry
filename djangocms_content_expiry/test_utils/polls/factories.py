@@ -9,7 +9,7 @@ from djangocms_content_expiry.test_utils.factories import (
 )
 
 from .models import Poll, PollContent
-
+from djangocms_versioning.signals import pre_version_operation, post_version_operation
 
 class PollFactory(factory.django.DjangoModelFactory):
     name = FuzzyText(length=6)
@@ -45,6 +45,7 @@ class PollContentWithVersionFactory(PollContentFactory):
         PollVersionFactory(content=self, **kwargs)
 
 
+@factory.django.mute_signals(pre_version_operation, post_version_operation)
 class PollContentExpiryFactory(factory.django.DjangoModelFactory):
     created_by = factory.SubFactory(UserFactory)
     version = factory.SubFactory(PollVersionFactory)
