@@ -1,6 +1,5 @@
-from cms.test_utils.testcases import CMSTestCase
-
 from cms.api import create_page
+from cms.test_utils.testcases import CMSTestCase
 
 from djangocms_versioning.models import Version
 

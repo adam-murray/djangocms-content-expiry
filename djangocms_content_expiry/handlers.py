@@ -1,7 +1,5 @@
 from datetime import datetime
-
 from dateutil.relativedelta import relativedelta
-
 from djangocms_versioning import constants
 
 from djangocms_content_expiry.models import ContentExpiry

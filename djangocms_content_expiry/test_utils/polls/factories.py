@@ -1,5 +1,6 @@
 import factory
 from djangocms_versioning.models import Version
+from djangocms_versioning.signals import pre_version_operation, post_version_operation
 from factory.fuzzy import FuzzyChoice, FuzzyText
 
 from djangocms_content_expiry.models import ContentExpiry
@@ -9,7 +10,7 @@ from djangocms_content_expiry.test_utils.factories import (
 )
 
 from .models import Poll, PollContent
-from djangocms_versioning.signals import pre_version_operation, post_version_operation
+
 
 class PollFactory(factory.django.DjangoModelFactory):
     name = FuzzyText(length=6)

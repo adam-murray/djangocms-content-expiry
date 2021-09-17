@@ -4,14 +4,8 @@ import datetime
 from djangocms_versioning.constants import ARCHIVED, DRAFT, PUBLISHED, UNPUBLISHED
 
 from djangocms_content_expiry.models import ContentExpiry
-from djangocms_content_expiry.test_utils.factories import (
-    ContentExpiryFactory,
-    UserFactory,
-)
-from djangocms_content_expiry.test_utils.polls.factories import (
-    PollContentExpiryFactory,
-    PollContentWithVersionFactory,
-)
+from djangocms_content_expiry.test_utils.factories import UserFactory
+from djangocms_content_expiry.test_utils.polls.factories import PollContentExpiryFactory
 
 
 class ContentExpiryChangelistTestCase(CMSTestCase):

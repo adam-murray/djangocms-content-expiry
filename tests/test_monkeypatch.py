@@ -3,10 +3,9 @@ from django.contrib import admin
 from cms.test_utils.testcases import CMSTestCase
 
 import datetime
-
 from djangocms_versioning.constants import PUBLISHED
 
-from djangocms_content_expiry.test_utils.polls.factories import PollContentExpiryFactory, UserFactory
+from djangocms_content_expiry.test_utils.polls.factories import PollContentExpiryFactory
 
 
 class ContentExpiryMonkeyPatchTesCase(CMSTestCase):
