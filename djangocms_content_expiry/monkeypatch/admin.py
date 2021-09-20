@@ -24,7 +24,7 @@ def get_list_display(func):
     def inner(self, request):
         list_display = func(self, request)
         created_by_index = list_display.index('created_by')
-        return list_display[:created_by_index] + ('expire',) + list_display[created_by_index:]
+        return list_display[:created_by_index] + (_('expire'),) + list_display[created_by_index:]
 
     return inner
 
