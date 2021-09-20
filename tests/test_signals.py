@@ -2,9 +2,8 @@ from cms.api import create_page
 from cms.test_utils.testcases import CMSTestCase
 from cms.test_utils.util.context_managers import signal_tester
 
-from djangocms_versioning import constants
+from djangocms_versioning import constants, signals
 from djangocms_versioning.models import Version
-from djangocms_versioning import signals
 
 from djangocms_content_expiry.models import ContentExpiry
 
