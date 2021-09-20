@@ -395,7 +395,6 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
         When selecting the All filter option all of the expiry records should be shown,
         selecting another option should remove the all selection.
         """
-
         date = datetime.datetime.now() - datetime.timedelta(days=5)
 
         expiry_draft = PollContentExpiryFactory(expires=date, version__state=DRAFT)
