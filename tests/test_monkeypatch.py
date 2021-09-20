@@ -13,7 +13,6 @@ class ContentExpiryMonkeyPatchTesCase(CMSTestCase):
         """
         Monkey patch should add expiry column and values to admin menu list display
         """
-
         from_date = datetime.datetime.now()
 
         delta_1 = datetime.timedelta(days=1)
