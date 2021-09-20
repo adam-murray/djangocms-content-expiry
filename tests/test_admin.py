@@ -396,7 +396,6 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
         selecting another option should remove the all selection.
         """
         date = datetime.datetime.now() - datetime.timedelta(days=5)
-
         expiry_draft = PollContentExpiryFactory(expires=date, version__state=DRAFT)
         expiry_published = PollContentExpiryFactory(expires=date, version__state=PUBLISHED)
         expiry_archived = PollContentExpiryFactory(expires=date, version__state=ARCHIVED)

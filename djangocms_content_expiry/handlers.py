@@ -10,19 +10,16 @@ def create_content_expiry(**kwargs):
         # Attempt to find an existing content expiry record from a linked version
         expire_record = ContentExpiry.objects.filter(version_id=version.source_id)
         if not expire_record:
-            ContentExpiry.objects.create(
-                version=version,
-                created=version.created,
-                created_by=version.created_by,
-                expires=_get_future_expire_date(version.modified),
-            )
+            expiry_date = _get_future_expire_date(version.modified)
         else:
-            ContentExpiry.objects.create(
-                version=version,
-                created=version.created,
-                created_by=version.created_by,
-                expires=expire_record[0].expires,
-            )
+            expiry_date = expire_record[0].expires
+
+        ContentExpiry.objects.create(
+            version=version,
+            created=version.created,
+            created_by=version.created_by,
+            expires=expiry_date,
+        )
 
 
 def _get_future_expire_date(modified_date):

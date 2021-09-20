@@ -6,12 +6,13 @@ from djangocms_versioning import constants, signals
 from djangocms_versioning.models import Version
 
 from djangocms_content_expiry.models import ContentExpiry
+from djangocms_content_expiry.test_utils.polls.factories import PollFactory, PollVersionFactory
 
 
 class ContentExpirySignalTestCase(CMSTestCase):
     def test_content_expiry_creation_signal(self):
         """
-       Content expiry should exist in new versions, always.
+        Content expiry should exist in new versions, always.
         """
         language = "en"
         user = self.get_superuser()
@@ -29,7 +30,8 @@ class ContentExpirySignalTestCase(CMSTestCase):
 
     def test_submitted_for_review_signal(self):
         """
-        Creating a new page should emit a signal to create a content expiry entry and should only execute on creating a draft
+        Creating a new page should emit a signal to create a content expiry entry
+        and should only execute on creating a draft
         """
         with signal_tester(signals.post_version_operation) as env:
             language = "en"
@@ -44,3 +46,22 @@ class ContentExpirySignalTestCase(CMSTestCase):
             self.assertEqual(env.call_count, 1)
             signal = env.calls[0][1]
             self.assertEqual(signal["operation"], constants.OPERATION_DRAFT)
+
+    def test_content_expiry_creation_for_polls(self):
+        """
+        Creating a new poll should emit a signal to create a content expiry entry
+        and should only execute on creating a draft
+        """
+        with signal_tester(signals.post_version_operation) as env:
+            poll = PollFactory()
+            version = PollVersionFactory(
+                state=constants.DRAFT, content__poll=poll
+            )
+
+            self.assertEqual(env.call_count, 1)
+            signal = env.calls[0][1]
+            self.assertEqual(
+                signal["sender"], version.content_type.model_class()
+            )
+            self.assertEqual(signal["operation"], constants.OPERATION_DRAFT)
+            self.assertEqual(signal["obj"], version)
