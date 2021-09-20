@@ -29,7 +29,7 @@ class ContentExpirySignalTestCase(CMSTestCase):
 
     def test_submitted_for_review_signal(self):
         """
-        Test that creating a new page emits 1 signal to create content expiry and only executes on creating a draft
+        Creating a new page should emit a signal to create a content expiry entry and should only execute on creating a draft
         """
         with signal_tester(signals.post_version_operation) as env:
             language = "en"
