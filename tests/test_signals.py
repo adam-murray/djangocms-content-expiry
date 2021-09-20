@@ -11,7 +11,7 @@ from djangocms_content_expiry.models import ContentExpiry
 class ContentExpirySignalTestCase(CMSTestCase):
     def test_content_expiry_creation_signal(self):
         """
-        Test content expiry exists in the new version
+       Content expiry should exist in new versions, always.
         """
         language = "en"
         user = self.get_superuser()
