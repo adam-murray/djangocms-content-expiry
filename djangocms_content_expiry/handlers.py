@@ -14,7 +14,7 @@ def create_content_expiry(**kwargs):
                 version=version,
                 created=version.created,
                 created_by=version.created_by,
-                expires=_get_future_expire_date(datetime.now()),
+                expires=_get_future_expire_date(version.modified),
             )
         else:
             ContentExpiry.objects.create(

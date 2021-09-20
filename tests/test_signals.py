@@ -44,8 +44,3 @@ class ContentExpirySignalTestCase(CMSTestCase):
             self.assertEqual(env.call_count, 1)
             signal = env.calls[0][1]
             self.assertEqual(signal["operation"], constants.OPERATION_DRAFT)
-
-
-
-
-
