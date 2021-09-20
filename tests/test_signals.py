@@ -6,7 +6,10 @@ from djangocms_versioning import constants, signals
 from djangocms_versioning.models import Version
 
 from djangocms_content_expiry.models import ContentExpiry
-from djangocms_content_expiry.test_utils.polls.factories import PollFactory, PollVersionFactory
+from djangocms_content_expiry.test_utils.polls.factories import (
+    PollFactory,
+    PollVersionFactory,
+)
 
 
 class ContentExpirySignalTestCase(CMSTestCase):

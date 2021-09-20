@@ -9,6 +9,6 @@ class DjangocmsContentExpiryConfig(AppConfig):
     verbose_name = _("django CMS Content Expiry")
 
     def ready(self):
-        from .monkeypatch import admin as monkeypatch_admin
         from .handlers import create_content_expiry
+        from .monkeypatch import admin as monkeypatch_admin
         signals.post_version_operation.connect(create_content_expiry)
