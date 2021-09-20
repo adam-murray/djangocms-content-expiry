@@ -10,5 +10,5 @@ class DjangocmsContentExpiryConfig(AppConfig):
 
     def ready(self):
         from .handlers import create_content_expiry
-        from .monkeypatch import admin as monkeypatch_admin
+        from .monkeypatch import admin as monkeypatch_admin  # noqa: F401
         signals.post_version_operation.connect(create_content_expiry)
