@@ -7,6 +7,7 @@ from djangocms_content_expiry.models import ContentExpiry
 def create_content_expiry(**kwargs):
     if kwargs['operation'] == constants.OPERATION_DRAFT:
         version = kwargs["obj"]
+        # Attempt to find an existing content expiry record from a linked version
         expire_record = ContentExpiry.objects.filter(version_id=version.source_id)
         if not expire_record:
             ContentExpiry.objects.create(
