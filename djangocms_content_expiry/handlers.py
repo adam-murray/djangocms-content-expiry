@@ -1,4 +1,3 @@
-from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from djangocms_versioning import constants
 
