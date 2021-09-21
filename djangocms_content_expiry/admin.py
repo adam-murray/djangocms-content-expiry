@@ -3,7 +3,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 
 import datetime
-
 from import_export.admin import ExportMixin
 from import_export.formats import base_formats
 from rangefilter.filters import DateRangeFilter
