@@ -5,16 +5,21 @@ from django.utils.translation import ugettext_lazy as _
 import datetime
 from rangefilter.filters import DateRangeFilter
 
+from import_export.admin import ExportMixin
+from import_export.formats import base_formats
+
 from .filters import AuthorFilter, ContentTypeFilter, VersionStateFilter
 from .models import ContentExpiry
-
+from .resources import ContentExpiryResource
 
 @admin.register(ContentExpiry)
-class ContentExpiryAdmin(admin.ModelAdmin):
+class ContentExpiryAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ['title', 'content_type', 'expires', 'version_state', 'version_author']
     # Disable automatically linking to the Expiry record
     list_display_links = None
     list_filter = (ContentTypeFilter, ('expires', DateRangeFilter), VersionStateFilter, AuthorFilter)
+    # Resource used for exporting view to csv
+    resource_class = ContentExpiryResource
 
     class Media:
         css = {
@@ -66,3 +71,12 @@ class ContentExpiryAdmin(admin.ModelAdmin):
         """
         return obj.version.created_by
     version_author.short_description = _('Version author')
+
+    def get_export_formats(self):
+        """
+        Returns available export formats.
+        """
+        formats = (
+            base_formats.CSV,
+        )
+        return [f for f in formats if f().can_export()]

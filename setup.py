@@ -8,6 +8,7 @@ INSTALL_REQUIREMENTS = [
     "django-cms",
     "django-admin-rangefilter",
     "python-dateutil",
+    "django-import-export",
 ]
 
 
