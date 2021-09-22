@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.contrib.contenttypes.models import ContentType
+from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 
+import csv
 import datetime
 from rangefilter.filters import DateRangeFilter
 
@@ -15,6 +17,7 @@ class ContentExpiryAdmin(admin.ModelAdmin):
     # Disable automatically linking to the Expiry record
     list_display_links = None
     list_filter = (ContentTypeFilter, ('expires', DateRangeFilter), VersionStateFilter, AuthorFilter)
+    actions = ["export"]
 
     class Media:
         css = {
@@ -66,3 +69,22 @@ class ContentExpiryAdmin(admin.ModelAdmin):
         """
         return obj.version.created_by
     version_author.short_description = _('Version author')
+
+    def export(self, request, queryset):
+        meta = self.model._meta
+        field_names = ['Title', 'Content Type', 'Expiry Date', 'Version State', 'Version Author']
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+        writer = csv.writer(response)
+
+        writer.writerow(field_names)
+        for obj in queryset:
+            title = obj.version.content
+            content_type = ContentType.objects.get_for_model(obj.version.content)
+            expiry_date = obj.expires
+            version_state = obj.version.get_state_display()
+            version_author = obj.version.created_by
+            writer.writerow([title, content_type, expiry_date, version_state, version_author])
+
+        return response
+    export.short_description = _('Export to csv')
