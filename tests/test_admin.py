@@ -482,3 +482,47 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
             transform=lambda x: x.pk,
             ordered=False,
         )
+
+    def test_export_button_endpoint_response_is_a_csv(self):
+        """
+        Valid csv file is returned when the export endpoint is executes
+        """
+        date = datetime.datetime.now() - datetime.timedelta(days=5)
+        PollContentExpiryFactory(expires=date, version__state=DRAFT)
+
+        version_selection = f"?state=_all_"
+        export_endpoint = "export_csv/"
+        admin_endpoint = self.get_admin_url(ContentExpiry, "changelist")
+
+        with self.login_user_context(self.get_superuser()):
+            response = self.client.get(admin_endpoint + export_endpoint + version_selection)
+
+        # Endpoint is returning 200 status code
+        self.assertEqual(response.status_code, 200)
+        # Response contains a csv file
+        self.assertEquals(
+            response.get('Content-Disposition'),
+            "attachment; filename={}.csv".format("djangocms_content_expiry.contentexpiry")
+        )
+
+    def test_filter_boundaries_respected_in_export(self):
+        """
+        Export respects applied filters.
+        Only content in view should be exported.
+        """
+        date = datetime.datetime.now() - datetime.timedelta(days=5)
+        # Create draft records
+        PollContentExpiryFactory(expires=date, version__state=DRAFT)
+        PollContentExpiryFactory(expires=date, version__state=PUBLISHED)
+
+        # When draft is selected only the draft entries should be shown
+        version_selection = f"?state={DRAFT}"
+        export_endpoint = "export_csv/"
+        admin_endpoint = self.get_admin_url(ContentExpiry, "changelist")
+
+        with self.login_user_context(self.get_superuser()):
+            response = self.client.get(admin_endpoint + export_endpoint + version_selection)
+
+        response_content = response.content.decode()
+        # Published content should not be available in exported data if the filter is set to display draft only
+        self.assertNotIn('Published', response_content)

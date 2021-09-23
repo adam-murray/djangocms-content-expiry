@@ -95,7 +95,6 @@ class ContentExpiryAdmin(admin.ModelAdmin):
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
         writer = csv.writer(response)
-
         writer.writerow(field_names)
 
         for row in queryset:
