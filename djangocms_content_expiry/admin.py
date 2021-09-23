@@ -1,10 +1,10 @@
+import csv
+
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
-
-import csv
 
 from .filters import (
     AuthorFilter,
