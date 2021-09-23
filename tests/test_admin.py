@@ -490,7 +490,7 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
         date = datetime.datetime.now() - datetime.timedelta(days=5)
         PollContentExpiryFactory(expires=date, version__state=DRAFT)
 
-        version_selection = f"?state=_all_"
+        version_selection = "?state=_all_"
         export_endpoint = "export_csv/"
         admin_endpoint = self.get_admin_url(ContentExpiry, "changelist")
 
