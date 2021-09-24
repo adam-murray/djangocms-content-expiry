@@ -483,6 +483,8 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
             ordered=False,
         )
 
+
+class ContentExpiryCsvExportTestCase(CMSTestCase):
     def test_export_button_endpoint_response_is_a_csv(self):
         """
         Valid csv file is returned when the export endpoint is executes
@@ -511,7 +513,7 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
         Only content in view should be exported.
         """
         date = datetime.datetime.now() - datetime.timedelta(days=5)
-        # Create draft records
+        # Create content expiry records for draft and published
         PollContentExpiryFactory(expires=date, version__state=DRAFT)
         PollContentExpiryFactory(expires=date, version__state=PUBLISHED)
 
