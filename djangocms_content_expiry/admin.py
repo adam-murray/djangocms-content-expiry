@@ -22,7 +22,6 @@ class ContentExpiryAdmin(admin.ModelAdmin):
     list_display = ['title', 'content_type', 'expires', 'version_state', 'version_author']
     list_filter = (ContentTypeFilter, ('expires', ContentExpiryDateRangeFilter), VersionStateFilter, AuthorFilter)
     form = ContentExpiryForm
-    actions = ["export_selected_objects"]
 
     class Media:
         css = {
