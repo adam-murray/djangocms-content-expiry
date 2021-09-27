@@ -487,7 +487,7 @@ class ContentExpiryChangelistVersionFilterTestCase(CMSTestCase):
 class ContentExpiryCsvExportTestCase(CMSTestCase):
     def test_export_button_endpoint_response_is_a_csv(self):
         """
-        Valid csv file is returned when the export endpoint is executes
+        Valid csv file is returned from the admin export endpoint
         """
         date = datetime.datetime.now() - datetime.timedelta(days=5)
         PollContentExpiryFactory(expires=date, version__state=DRAFT)
