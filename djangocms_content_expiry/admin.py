@@ -85,10 +85,9 @@ class ContentExpiryAdmin(admin.ModelAdmin):
 
     def export_to_csv(self, request):
         """
-        Retrieves queryset
-        Exports the retrieved queryset to csv format
+        Retrieves the queryset and exports to csv format
         """
-        queryset = self.get_export_queryset(request)
+        queryset = self.get_exported_queryset(request)
         meta = self.model._meta
         field_names = ['Title', 'Content Type', 'Expiry Date', 'Version State', 'Version Author']
         response = HttpResponse(content_type='text/csv')
@@ -106,17 +105,16 @@ class ContentExpiryAdmin(admin.ModelAdmin):
 
         return response
 
-    def get_export_queryset(self, request):
+    def get_exported_queryset(self, request):
         """
-        Returns export queryset.
-        Default implementation respects applied search and filters.
+        Returns export queryset by respecting applied filters.
         """
         list_display = self.get_list_display(request)
         list_display_links = self.get_list_display_links(request, list_display)
         list_filter = self.get_list_filter(request)
         search_fields = self.get_search_fields(request)
-
         changelist = self.get_changelist(request)
+
         changelist_kwargs = {'request': request,
                              'model': self.model,
                              'list_display': list_display,
