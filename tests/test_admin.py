@@ -494,7 +494,7 @@ class ContentExpiryCsvExportTestCase(CMSTestCase):
 
         version_selection = "?state=_all_"
         export_endpoint = "export_csv/"
-        admin_endpoint = self.get_admin_url(ContentExpiry, "changelist")
+        admin_endpoint = self.get_admin_url(ContentExpiry, "export_csv")
 
         with self.login_user_context(self.get_superuser()):
             response = self.client.get(admin_endpoint + export_endpoint + version_selection)
