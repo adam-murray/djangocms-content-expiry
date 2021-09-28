@@ -11,7 +11,7 @@ from freezegun import freeze_time
 
 from djangocms_content_expiry.models import ContentExpiry
 from djangocms_content_expiry.test_utils.factories import UserFactory
-from djangocms_content_expiry.test_utils.polls.factories import PollContentExpiryFactory, PollVersionFactory
+from djangocms_content_expiry.test_utils.polls.factories import PollContentExpiryFactory
 
 
 class ContentExpiryAdminViewsPermissionsTestCase(CMSTestCase):
