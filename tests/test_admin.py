@@ -520,7 +520,7 @@ class ContentExpiryCsvExportTestCase(CMSTestCase):
         # When draft is selected only the draft entries should be shown
         version_selection = f"?state={DRAFT}"
         export_endpoint = "export_csv/"
-        admin_endpoint = self.get_admin_url(ContentExpiry, "changelist")
+        admin_endpoint = self.get_admin_url(ContentExpiry, "export_csv")
 
         with self.login_user_context(self.get_superuser()):
             response = self.client.get(admin_endpoint + export_endpoint + version_selection)
