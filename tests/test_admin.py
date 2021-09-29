@@ -518,7 +518,6 @@ class ContentExpiryCsvExportFilterSettingsTestCase(CMSTestCase):
         Export respects applied author filters.
         CSV data should only export selected author's results
         """
-
         version_1 = PollContentExpiryFactory(expires=self.date, version__state=PUBLISHED)
         user_1 = version_1.version.created_by
         version_2 = PollContentExpiryFactory(expires=self.date, version__state=PUBLISHED)
