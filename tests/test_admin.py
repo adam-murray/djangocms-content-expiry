@@ -683,3 +683,18 @@ class ContentExpiryCsvExportFileTestCase(CMSTestCase):
         self.assertIn(content_expiry.version.content_type.name, response_content)
         # Another spot check to ensure version state is in the csv response
         self.assertIn("Draft", response_content)
+
+    def test_export_button_is_visible(self):
+        """
+        Export button should be visible on the frontend changelist
+        """
+        admin_endpoint = self.get_admin_url(ContentExpiry, "changelist")
+
+        with self.login_user_context(self.get_superuser()):
+            response = self.client.get(admin_endpoint)
+
+        self.assertContains(
+            response,
+            '<a class="historylink" href="/en/admin/djangocms_content_expiry/contentexpiry/export_csv/?">Export</a>',
+            html=True
+        )
