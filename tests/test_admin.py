@@ -542,7 +542,6 @@ class ContentExpiryCsvExportFilterSettingsTestCase(CMSTestCase):
         Export respects applied content type filters.
         CSV data should only export content matching selected content type's results
         """
-
         content_expiry = PollContentExpiryFactory(expires=self.date, version__state=PUBLISHED)
         version = content_expiry.version
 
