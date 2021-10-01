@@ -154,7 +154,7 @@ class AuthorFilter(admin.SimpleListFilter):
     """
     An author filter limited to those users who have added expiration dates
     """
-    title = _("Author")
+    title = _("Version Author")
     parameter_name = "created_by"
 
     def lookups(self, request, model_admin):
