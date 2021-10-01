@@ -2,9 +2,9 @@ from django.conf.urls import url
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from djangocms_versioning import admin
 from djangocms_moderation import admin as moderation_admin
 from djangocms_moderation.models import ModerationCollection, ModerationRequest
+from djangocms_versioning import admin
 
 from djangocms_content_expiry.constants import CONTENT_EXPIRY_EXPIRE_FIELD_LABEL
 from djangocms_content_expiry.models import ContentExpiry
@@ -82,8 +82,6 @@ def copy_content_expiry_view(self, request):
                     mr_content_expiry.expires = content_expiry.expires
                     mr_content_expiry.save()
                 else:
-                    from djangocms_content_expiry.models import ContentExpiry
-
                     ContentExpiry.objects.create(
                         created_by=request.user,
                         version=mr_version,

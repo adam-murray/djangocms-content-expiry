@@ -2,15 +2,15 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 
 import factory
-from factory.fuzzy import FuzzyText
-
-from djangocms_content_expiry.models import ContentExpiry
 from djangocms_moderation.models import (
     ModerationCollection,
     ModerationRequest,
     ModerationRequestTreeNode,
     Workflow,
 )
+from factory.fuzzy import FuzzyText
+
+from djangocms_content_expiry.models import ContentExpiry
 
 
 class UserFactory(factory.django.DjangoModelFactory):
