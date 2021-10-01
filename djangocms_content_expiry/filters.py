@@ -163,9 +163,9 @@ class AuthorFilter(admin.SimpleListFilter):
         options = []
         qs = model_admin.get_queryset(request)
         authors = qs.values_list('version__created_by', flat=True).distinct()
+        users = User.objects.filter(pk__in=authors)
 
-        for author in authors:
-            user = User.objects.get(pk=author)
+        for user in users:
             options.append(
                 (force_text(user.pk), user.get_full_name() or user.get_username())
             )
