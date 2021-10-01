@@ -103,4 +103,3 @@ class ChildModerationRequestTreeNodeFactory(factory.django.DjangoModelFactory):
     def _create(cls, model_class, parent, *args, **kwargs):
         """Make sure this is the child of a parent node"""
         return parent.add_child(*args, **kwargs)
-
