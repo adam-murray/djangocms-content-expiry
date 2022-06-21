@@ -1,0 +1,11 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {# INFO: content_expiry_static_url_prefix variable is used to inject static_url into actions.js #}
+    {# INFO: taken from https://github.com/django-cms/djangocms-versioning/blob/a0defe7e1973a08401083d981eb58176b732d7e3/djangocms_versioning/templates/djangocms_versioning/admin/mixin/change_list.html #}
+    <script>
+        let content_expiry_static_url_prefix = "{% static "djangocms_content_expiry/" %}"
+    </script>
+    {{ block.super }}
+{% endblock extrahead %}

@@ -25,7 +25,20 @@ a.btn.cms-content-expiry-action-btn img {
     float: left;
     display: inline-block;
 }
+a.btn.cms-actions-dropdown-menu-item-anchor img {
+        width: 20px;
+    height: 20px;
+    float: left;
+    display: inline-block;
+}
 a.btn.cms-content-expiry-action-btn span {
+    width: 20px;
+    height: 20px;
+    margin-top: 6px;
+    float: left;
+    display: inline-block;
+}
+a.btn.cms-actions-dropdown-menu-item-anchor span {
     width: 20px;
     height: 20px;
     margin-top: 6px;
@@ -38,4 +51,19 @@ span.svg-juxtaposed-font {
     line-height: 1rem;
     vertical-align: 20%;
     margin-top: -2px !important;
+}
+.cms-actions-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: -1px;
+    z-index: 1000;
+    min-width: 180px;
+    margin: 0;
+    padding: 0 !important;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,.25);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
